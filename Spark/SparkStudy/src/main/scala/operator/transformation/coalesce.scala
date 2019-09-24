@@ -5,17 +5,17 @@ import org.apache.spark.{SparkConf, SparkContext}
 import scala.collection.mutable.ListBuffer
 
 /**
- * \* Project: SparkStudy
- * \* Package: operator.transformation
- * \* Author: Willi Wei
- * \* Date: 2019-09-23 10:59:53
- * \* Description: repartition可以增多分区，也可以减少分区,注意数据流向，可以增多分区，是一个宽依赖
- *                  常用于增多分区，coalesce常用于减少分区
+ * \* project: SparkStudy
+ * \* package: operator.transformation
+ * \* author: Willi Wei
+ * \* date: 2019-09-24 09:40:04
+ * \* description: coalesce算子，可以增多分区，也可以减少分区，常用于减少分区
+ *      coalesce由少的分区分到多的分区时，不让产生shuffle，不起作用
  * \*/
-object repartition {
+object coalesce {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
-    conf.setMaster("local").setAppName("mapPartitionWithIndex")
+    conf.setMaster("local").setAppName("coalesce")
     val context = new SparkContext(conf)
     context.setLogLevel("Error")
     val rdd1 = context.parallelize(List[String](
@@ -31,7 +31,9 @@ object repartition {
       }
       list.iterator
     })
-    val rdd3 = rdd2.repartition(4)
+    // 如果让shuffle执行，则会产生宽依赖，如果不执行，如果不执行，可能会产生空分区
+    val rdd3 = rdd2.coalesce(4)
+    println(s"rdd3 partition number:${rdd3.getNumPartitions}")
     rdd3.mapPartitionsWithIndex((index, iter)=>{
       val list = new ListBuffer[String]()
       while (iter.hasNext){

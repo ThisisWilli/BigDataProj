@@ -9,7 +9,7 @@ import scala.collection.mutable.ListBuffer
  * \* Package: operator.transformation
  * \* Author: Willi Wei
  * \* Date: 2019-09-23 10:50:39
- * \* Description: 
+ * \* Description: 类似与mappartition，还会加上他们的索引号
  * \*/
 object mapPartitionWithIndex {
   def main(args: Array[String]): Unit = {
