@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * \* Project: SparkStudy
- * \* Package: operator.transformatio
+ * \* Package: operator.transformation
  * \* Author: Willi Wei
  * \* Date: 2019-09-23 13:31:05
  * \* Description:mappartitionwithindex算子，将算子按分区的索引进行分类
