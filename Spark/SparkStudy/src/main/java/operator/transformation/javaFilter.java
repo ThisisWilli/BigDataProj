@@ -7,7 +7,7 @@ import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.api.java.function.VoidFunction;
-import org.scalactic.Bool;
+// import org.scalactic.Bool;
 
 /**
  * \* Project: SparkStudy

@@ -3,7 +3,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 /**
  * \* project: SparkStudy
- * \* package: 
+ * \* package:
  * \* author: Willi Wei
  * \* date: 2019-10-08 10:17:43
  * \* description: 

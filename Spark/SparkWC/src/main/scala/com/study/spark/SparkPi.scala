@@ -11,7 +11,7 @@ import org.apache.spark.SparkContext
 object SparkPi {
 
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("Spark Pi").setMaster("local")
+    val conf = new SparkConf().setAppName("Spark Pi")
     // val conf = new SparkConf().setAppName("Spark Pi")
     val spark = new SparkContext(conf);
     spark.setLogLevel("Error")
