@@ -27,10 +27,10 @@ object SparkStreamingDriverHA {
      *
      * 若能获取回来StreamingContext，就不会执行CreateStreamingContext这个方法创建，否则就会创建
      */
-    val ssc: StreamingContext = StreamingContext.getOrCreate(ckDir, CreateStreamingContext)
-    ssc.start()
-    ssc.awaitTermination()
-    ssc.stop()
+//    val ssc: StreamingContext = StreamingContext.getOrCreate(ckDir, CreateStreamingContext)
+//    ssc.start()
+//    ssc.awaitTermination()
+//    ssc.stop()
   }
 
   def CreateStreamingContext(): Unit ={
