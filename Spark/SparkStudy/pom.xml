@@ -54,6 +54,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.62</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
 
     </dependencies>
 

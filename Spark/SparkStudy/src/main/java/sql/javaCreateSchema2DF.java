@@ -32,14 +32,21 @@ public class javaCreateSchema2DF {
                 .getOrCreate();
         // 读取文件并将原先读取的DataSet类型文件转化为JavaRDD类型
         JavaRDD<String> lineRDD = spark.read().textFile("data/person").toJavaRDD();
-        JavaRDD<Row> rowRDD = lineRDD.map(new Function<String, Row>() {
-            public Row call(String s) throws Exception {
-                return RowFactory.create(
-                        String.valueOf(s.split(" ")[0]),
-                        String.valueOf(s.split(" ")[1]),
-                        String.valueOf(s.split(" ")[2])
-                );
-            }
+//        JavaRDD<Row> rowRDD = lineRDD.map(new Function<String, Row>() {
+//            public Row call(String s) throws Exception {
+//                return RowFactory.create(
+//                        String.valueOf(s.split(" ")[0]),
+//                        String.valueOf(s.split(" ")[1]),
+//                        String.valueOf(s.split(" ")[2])
+//                );
+//            }
+//        });
+        JavaRDD<Row> rowRDD = lineRDD.map((s) -> {
+            return RowFactory.create(
+                    String.valueOf(s.split(" ")[0]),
+                    String.valueOf(s.split(" ")[1]),
+                    String.valueOf(s.split(" ")[2])
+            );
         });
         // 动态创建DataFrame中的元数据，元数据可以是自定义的字符串也可以来自外部数据库
         List <StructField> asList = Arrays.asList(

@@ -12,7 +12,7 @@ import org.apache.spark.api.java.function.VoidFunction;
  * \* Package: operator.transformation
  * \* Author: Willi Wei
  * \* Date: 2019-09-22 10:20:27
- * \* Description:
+ * \* Description:使用lambda改写算法
  * \
  */
 public class javaMap {
@@ -23,15 +23,10 @@ public class javaMap {
         JavaSparkContext javaSparkContext = new JavaSparkContext(conf);
         javaSparkContext.setLogLevel("Error");
         JavaRDD<String> lines = javaSparkContext.textFile("data/data.txt");
-        JavaRDD<String> map = lines.map(new Function<String, String>() {
-            public String call(String line) throws Exception {
-                return line + "*";
-            }
-        });
-        map.foreach(new VoidFunction<String>() {
-            public void call(String s) throws Exception {
-                System.out.println(s);
-            }
+        lines.map((line)->{
+            return line + "====";
+        }).foreach((line)->{
+            System.out.println(line);
         });
     }
 }
